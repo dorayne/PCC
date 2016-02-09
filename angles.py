@@ -3,23 +3,11 @@ import math
 def error_check(test):
     # convert input to integer, exit program if input is not a number
     try:
-        tested = int(test)
+        tested = float(test)
         return tested
     except:
         print "Invalid input, please try again and enter a whole number"
         exit()
-
-def area_tri(x, y, z):
-    global area
-    perim = (x + y + z)
-    p = float(perim/2)
-    area = float(math.sqrt(p * (p - x) * (p - y) * (p - z)))
-    return area
-
-def rad_deg(rad):
-    global deg
-    deg = rad * (180 / math.pi)
-    return deg
 
 def solve_angle_A(a, b, c):
     global rad_A
@@ -46,16 +34,9 @@ c = raw_input("Enter the length of third side of a triangle \n")
 if len(c) > 0:
     side_c = error_check(c)
 
-area_tri(side_a, side_b, side_c)
+solve_angle_A(side_a, side_b, side_c)
+solve_angle_A(side_a, side_b, side_c)
+solve_angle_A(side_a, side_b, side_c)
 
-#solve_angle_A(side_a, side_b, side_c)
-#solve_angle_B(side_a, side_b, side_c)
-#solve_angle_C(side_a, side_b, side_c)
+print "The angles of the triangle in radians are %r, %r, and %r" % (rad_A, rad_B, rad_C)
 
-#angle_A = rad_deg(rad_A)
-#angle_B = rad_deg(rad_B)
-#angle_C = rad_deg(rad_C)
-
-print "The lengths of the sides of the triangle are %d, %d, and %d" % (side_a, side_b, side_c)
-print "The area of the triangle is %r" % (area)
-#print "The angles of the triangle are %d, %d, and %d" %(angle_A, angle_B, angle_C)

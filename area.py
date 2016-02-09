@@ -3,7 +3,7 @@ import math
 def error_check(test):
     # convert input to integer, exit program if input is not a number
     try:
-        tested = int(test)
+        tested = float(test)
         return tested
     except:
         print "Invalid input, please try again and enter a whole number"
@@ -12,7 +12,9 @@ def error_check(test):
 def area_tri(x, y, z):
     global area
     perim = (x + y + z)
+    print perim
     p = float(perim/2)
+    print p
     area = float(math.sqrt(p * (p - x) * (p - y) * (p - z)))
     return area
 
@@ -27,3 +29,5 @@ if len(c) > 0:
     side_c = error_check(c)
 
 area_tri(side_a, side_b, side_c)
+
+print "The area of the triangle is %r" % (area)
