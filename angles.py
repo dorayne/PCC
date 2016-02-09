@@ -9,20 +9,28 @@ def error_check(test):
         print "Invalid input, please try again and enter a whole number"
         exit()
 
+def rad_to_deg(rad):
+    deg = rad * (180 / math.pi)
+    return deg
+
 def solve_angle_A(a, b, c):
     global rad_A
-    rad_A = float(math.acos((a * a - b * b - c * c) /  (-2 * b * c)))
+    cos_A = (a * a - b * b - c * c) / (-2 * b * c)
+    rad_A = math.acos(cos_A)
     return rad_A
 
 def solve_angle_B(a, b, c):
     global rad_B
-    rad_B = float(math.acos((b * b - a * a - c * c) /  (-2 * a * c)))
+    cos_B = (b * b - a * a - c * c) / (-2 * a * c)
+    rad_B = math.acos(cos_B)
     return rad_B
 
 def solve_angle_C(a, b, c):
     global rad_C
-    rad_C = float(math.acos((c * c - a * a - b * b) /  (-2 * a * b)))
+    cos_C = (c * c - a * a - b * b) / (-2 * a * b)
+    rad_C = math.acos(cos_C)
     return rad_C
+
 
 a = raw_input("Enter the length of first side of a triangle \n")
 if len(a) > 0:
@@ -35,8 +43,11 @@ if len(c) > 0:
     side_c = error_check(c)
 
 solve_angle_A(side_a, side_b, side_c)
-solve_angle_A(side_a, side_b, side_c)
-solve_angle_A(side_a, side_b, side_c)
+solve_angle_B(side_a, side_b, side_c)
+solve_angle_C(side_a, side_b, side_c)
 
-print "The angles of the triangle in radians are %r, %r, and %r" % (rad_A, rad_B, rad_C)
+deg_A = rad_to_deg(rad_A)
+deg_B = rad_to_deg(rad_B)
+deg_C = rad_to_deg(rad_C)
 
+print deg_A, deg_B, deg_C
