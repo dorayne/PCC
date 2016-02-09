@@ -11,9 +11,29 @@ def error_check(test):
 
 def area_tri(x, y, z):
     global area
-    perim = (x + y + z) / 2
-    area = math.sqrt(perim * (perim - x) * (perim - y) * (perim - z))
+    perim = float((x + y + z) / 2)
+    area = float(math.sqrt(perim * (perim - x) * (perim - y) * (perim - z)))
     return area
+
+def rad_deg(rad):
+    global deg
+    deg = rad * (180 / math.pi)
+    return deg
+
+def solve_angle_A(a, b, c):
+    global rad_A
+    rad_A = float(math.acos((a * a - b * b - c * c) /  (-2 * b * c)))
+    return rad_A
+
+def solve_angle_B(a, b, c):
+    global rad_B
+    rad_B = float(math.acos((b * b - a * a - c * c) /  (-2 * a * c)))
+    return rad_B
+
+def solve_angle_C(a, b, c):
+    global rad_C
+    rad_C = float(math.acos((c * c - a * a - b * b) /  (-2 * a * b)))
+    return rad_C
 
 a = raw_input("Enter the length of first side of a triangle \n")
 if len(a) > 0:
@@ -27,5 +47,14 @@ if len(c) > 0:
 
 area_tri(side_a, side_b, side_c)
 
-print "The lengths of the sides of the triangle are %d, %d, %d" % (side_a, side_b, side_c)
+#solve_angle_A(side_a, side_b, side_c)
+#solve_angle_B(side_a, side_b, side_c)
+#solve_angle_C(side_a, side_b, side_c)
+
+#angle_A = rad_deg(rad_A)
+#angle_B = rad_deg(rad_B)
+#angle_C = rad_deg(rad_C)
+
+print "The lengths of the sides of the triangle are %d, %d, and %d" % (side_a, side_b, side_c)
 print "The area of the triangle with the given sides is %d" % (area)
+#print "The angles of the triangle are %d, %d, and %d" %(angle_A, angle_B, angle_C)
