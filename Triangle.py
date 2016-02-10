@@ -25,8 +25,8 @@ def area_tri(x, y, z):
     # get the area of the triangle using Heron's formula
     global area
     perim = (x + y + z)
-    p = float(perim/2)
-    area = float(math.sqrt(p * (p - x) * (p - y) * (p - z)))
+    p = perim/2
+    area = round(math.sqrt(p * (p - x) * (p - y) * (p - z)), 2)
     return area
     
 def rad_to_deg(rad):
@@ -71,13 +71,13 @@ triangle_exist(side_a, side_b, side_c)
 area_tri(side_a, side_b, side_c)
 
 solve_angle_A(side_a, side_b, side_c)
-deg_A = rad_to_deg(rad_A)
+deg_A = round(rad_to_deg(rad_A), 2)
 
 solve_angle_B(side_a, side_b, side_c)
-deg_B = rad_to_deg(rad_B)
+deg_B = round(rad_to_deg(rad_B), 2)
 
 solve_angle_C(side_a, side_b, side_c)
-deg_C = rad_to_deg(rad_C)
+deg_C = round(rad_to_deg(rad_C), 2)
 
 
 print "The lengths of the sides of the triangle are %d, %d, and %d" % (side_a, side_b, side_c)
