@@ -4,7 +4,7 @@
 import math
 
 def error_check(test):
-    # convert input to integer, exit program if input is not a number
+    # convert input to float, exit program if input is not a number
     try:
         tested = float(test)
         return tested
