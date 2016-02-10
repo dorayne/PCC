@@ -27,3 +27,5 @@ if len(b) > 0:
 c = raw_input("Enter the length of third side of a triangle \n")
 if len(c) > 0:
     side_c = error_check(c)
+
+triangle_exist(side_a, side_b, side_c)
