@@ -17,6 +17,7 @@ def error_pos_num(num):
     if num > 0:
         return num
     else:
+        print "Invalid input, please try again and enter a positive number"
         return False
 
 def error_triangle_exist(a, b, c):
