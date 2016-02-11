@@ -73,7 +73,7 @@ while True:
 while True:
     raw_b = raw_input("Enter the length of second side of a triangle \n")
     side_b = error_pos_num(error_change_float(raw_b))
-    if side_a:
+    if side_b:
         break
 
 while True:
@@ -97,5 +97,5 @@ deg_C = round(rad_to_deg(rad_C), 2)
 
 
 print "The lengths of the sides of the triangle are %d, %d, and %d" % (side_a, side_b, side_c)
-print "The area of the triangle is %r" % (area)
+print "The area of the triangle is %r square units" % (area)
 print "The angles of the triangle in degrees are %r, %r, and %r" %(deg_A, deg_B, deg_C)
