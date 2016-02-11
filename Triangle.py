@@ -38,8 +38,7 @@ def error_triangle_exist(a, b, c):
 def area_tri(x, y, z):
     # get the area of the triangle using Heron's formula
     global area
-    perim = x + y + z
-    p = perim/2
+    p = (x + y + z) / 2
     area = round(math.sqrt(p * (p - x) * (p - y) * (p - z)), 2)
     return area
     
