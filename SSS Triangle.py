@@ -7,7 +7,7 @@ until a valid triangle is entered.
 import math
 
 def float_test(test):
-    # convert input to float
+    # verify input is a number
     try:
         float(test)
         return True
@@ -24,7 +24,7 @@ def positive_test(n):
         return False
 
 def triangle_exist(a, b, c):
-    # determines if the given sides will form a triangle using the Triangle Inequality Theorem
+    # verifies if the given sides will form a triangle using the Triangle Inequality Theorem
     if (a + b) > c and (b + c) > a and (a + c) > b:
         return True
     else:
@@ -64,13 +64,11 @@ def get_input():
         if float_test(raw_a):
             if positive_test(raw_a):
                 break
-
     while True:
         raw_b = raw_input("Enter the length of second side of a triangle \n")
         if float_test(raw_b):
             if positive_test(raw_b):
                 break
-
     while True:
         raw_c = raw_input("Enter the length of third side of a triangle \n")
         if float_test(raw_c):
