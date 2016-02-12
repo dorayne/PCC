@@ -8,12 +8,12 @@ import math
 
 def float_test(test):
     """verify input is a number"""
-#    try:
-    float(test)
-    return True
-#    except:
-    print "Invalid input, please try again and enter a number\n"
-    return False
+    try:
+        float(test)
+        return True
+    except ValueError:
+        print "Invalid input, please try again and enter a number\n"
+        return False
 
 def positive_test(num):
     """verify input is a positive number"""
