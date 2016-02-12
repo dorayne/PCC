@@ -6,38 +6,35 @@ until a valid triangle is entered.
 
 import math
 
-def error_change_float(test):
+def float_test(test):
     # convert input to float
     try:
         tested = float(test)
-        return tested
+        return True
     except:
         print "Invalid input, please try again and enter a number\n"
         return False
 
-def error_pos_num(num):
-    # verify that input is a positive number
+def positive_test(n):
+    # verify input is a positive number
+    num = float(n)
     if num > 0:
-        return num
+        return True
     else:
         print "Invalid input, please try again and enter a positive number.\n"
         return False
 
-def error_triangle_exist(a, b, c):
+def triangle_exist(a, b, c):
     # determines if the given sides will form a triangle using the Triangle Inequality Theorem
-    global exists
     if (a + b) > c and (b + c) > a and (a + c) > b:
-        exists = True
-        return a, b, c, exists
+        return True
     else:
         print "The sides entered do not form a triangle. Please try again with different sides.\n"
-        exists = False
-        get_input()
-        return exists
+        return False
+
 
 def area_tri(x, y, z):
     # get the area of the triangle using Heron's formula
-    global area
     p = (x + y + z) / 2
     area = round(math.sqrt(p * (p - x) * (p - y) * (p - z)), 2)
     return area
@@ -49,62 +46,57 @@ def rad_to_deg(rad):
 
 def solve_angle_A(a, b, c):
     # get angle A using the Law of Cosines
-    global rad_A
     rad_A = math.acos((a * a - b * b - c * c) / (-2 * b * c))
     return rad_A
 
 def solve_angle_B(a, b, c):
     # get angle B using the Law of Cosines
-    global rad_B
     rad_B = math.acos((b * b - a * a - c * c) / (-2 * a * c))
     return rad_B
 
 def solve_angle_C(a, b, c):
     # get angle C using the Law of Cosines
-    global rad_C
     rad_C = math.acos((c * c - a * a - b * b) / (-2 * a * b))
     return rad_C
     
 def get_input():
     # get user input for the 3 sides
-    global side_a, side_b, side_c
     while True:
         raw_a = raw_input("Enter the length of first side of a triangle \n")
-        side_a = error_pos_num(error_change_float(raw_a))
-        if side_a:
-            break
+        if float_test(raw_a):
+            if positive_test(raw_a):
+                break
 
     while True:
         raw_b = raw_input("Enter the length of second side of a triangle \n")
-        side_b = error_pos_num(error_change_float(raw_b))
-        if side_b:
-            break
+        if float_test(raw_b):
+            if positive_test(raw_b):
+                break
 
     while True:
         raw_c = raw_input("Enter the length of third side of a triangle \n")
-        side_c = error_pos_num(error_change_float(raw_c))
-        if side_c:
-            break
-
-get_input()
+        if float_test(raw_c):
+            if positive_test(raw_c):
+                break
+    return (float(raw_a), float(raw_b), float(raw_c))
 
 while True:
-    error_triangle_exist(side_a, side_b, side_c)
-    if exists:
+    side_a, side_b, side_c = get_input()
+    if triangle_exist(side_a, side_b, side_c):
         break
 
-area_tri(side_a, side_b, side_c)
+area = area_tri(side_a, side_b, side_c)
 
-solve_angle_A(side_a, side_b, side_c)
+rad_A = solve_angle_A(side_a, side_b, side_c)
 deg_A = round(rad_to_deg(rad_A), 2)
 
-solve_angle_B(side_a, side_b, side_c)
+rad_B = solve_angle_B(side_a, side_b, side_c)
 deg_B = round(rad_to_deg(rad_B), 2)
 
-solve_angle_C(side_a, side_b, side_c)
+rad_C = solve_angle_C(side_a, side_b, side_c)
 deg_C = round(rad_to_deg(rad_C), 2)
 
 
-print "The lengths of the sides of the triangle are %d, %d, and %d" % (side_a, side_b, side_c)
+print "\nThe lengths of the sides of the triangle are %r, %r, and %r" % (side_a, side_b, side_c)
 print "The area of the triangle is %r square units" % (area)
 print "The angles of the triangle in degrees are %r, %r, and %r" %(deg_A, deg_B, deg_C)
