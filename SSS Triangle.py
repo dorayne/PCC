@@ -9,7 +9,7 @@ import math
 def float_test(test):
     # convert input to float
     try:
-        tested = float(test)
+        float(test)
         return True
     except:
         print "Invalid input, please try again and enter a number\n"
@@ -17,8 +17,7 @@ def float_test(test):
 
 def positive_test(n):
     # verify input is a positive number
-    num = float(n)
-    if num > 0:
+    if float(n) > 0:
         return True
     else:
         print "Invalid input, please try again and enter a positive number.\n"
@@ -32,13 +31,12 @@ def triangle_exist(a, b, c):
         print "The sides entered do not form a triangle. Please try again with different sides.\n"
         return False
 
-
-def area_tri(x, y, z):
+def area_tri(a, b, c):
     # get the area of the triangle using Heron's formula
-    p = (x + y + z) / 2
-    area = round(math.sqrt(p * (p - x) * (p - y) * (p - z)), 2)
+    p = (a + b + c) / 2
+    area = math.sqrt(p * (p - a) * (p - a) * (p - a)), 2
     return area
-    
+
 def rad_to_deg(rad):
     # convert radians to degrees
     deg = rad * (180 / math.pi)
@@ -58,7 +56,7 @@ def solve_angle_C(a, b, c):
     # get angle C using the Law of Cosines
     rad_C = math.acos((c * c - a * a - b * b) / (-2 * a * b))
     return rad_C
-    
+
 def get_input():
     # get user input for the 3 sides
     while True:
@@ -85,7 +83,7 @@ while True:
     if triangle_exist(side_a, side_b, side_c):
         break
 
-area = area_tri(side_a, side_b, side_c)
+area = round(area_tri(side_a, side_b, side_c), 2)
 
 rad_A = solve_angle_A(side_a, side_b, side_c)
 deg_A = round(rad_to_deg(rad_A), 2)
@@ -95,7 +93,6 @@ deg_B = round(rad_to_deg(rad_B), 2)
 
 rad_C = solve_angle_C(side_a, side_b, side_c)
 deg_C = round(rad_to_deg(rad_C), 2)
-
 
 print "\nThe lengths of the sides of the triangle are %r, %r, and %r" % (side_a, side_b, side_c)
 print "The area of the triangle is %r square units" % (area)
